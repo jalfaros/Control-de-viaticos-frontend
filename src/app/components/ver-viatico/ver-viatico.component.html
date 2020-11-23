@@ -1,0 +1,77 @@
+<div class="col animate__animated animate__fadeIn">
+  <div class="card shadow p-3 mb-5 bg-white rounded" style="width: auto">
+    <div class="card-header" style="text-align: center;">
+        <h1><strong>Eventos</strong> 
+          <button  
+            mat-fab matTooltip ="Agregar un evento" 
+            color="primary" 
+            class="agregar"
+            (click)="crearEvento()">
+            <mat-icon>add</mat-icon>
+            </button>
+
+        
+        </h1>
+        <div class="col">
+          
+        </div>
+    </div>
+    <div class="card-body">
+      <!--Aquí va el alert-->
+      <div class="alert alert-warning" style="text-align: center;" role="alert" *ngIf="!listEventos">
+        <span>
+          No existen eventos creados
+        </span>
+      </div>
+      <table class="table" *ngIf="listEventos">
+        <thead class="thead-dark" style="text-align: center;">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Reporte</th>
+            <th scope="col">Trabajo realizado</th>
+            <th scope="col">Duración</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Centro</th>
+            <th scope="col">Motivo</th>
+            <th scope="col">Labor</th>
+            <th scope="col">Sucursal</th>
+            <th scope="col">Recurso</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr *ngFor="let item of listEventos; let i = index">
+            <th>{{item.idEvento}}</th>
+            <td>{{item.pReportado}}</td>
+            <td>{{item.tRealizado}}</td>
+            <td>{{item.horas}}:{{item.minutos}}</td>
+            <td>{{repararFecha(item.fecha)}}</td>
+            <td>{{item.centroCosto}}</td>
+            <td>{{item.motivo}}</td>
+            <td>{{item.labor}}</td>
+            <td>{{item.sucursal}}</td>
+            <td>{{item.nombre}} {{item.apellido1}}</td>
+            
+            <td class="row" >
+              
+           
+                <button mat-icon-button
+                (click)="listarViaticos(item.idEvento)"
+                matTooltip ="Ver Evento" >
+                  <mat-icon>visibility</mat-icon>
+                </button>
+  
+                <button mat-icon-button matTooltip="Eliminar Evento"
+                (click)="deleteEvento(item.idEvento, i)">
+                <mat-icon class="rojo">delete</mat-icon>
+                </button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>

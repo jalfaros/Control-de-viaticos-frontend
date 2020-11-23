@@ -1,0 +1,20 @@
+.agregar {
+
+    font-size: 8pt;
+    margin: 10px;
+    position:absolute;
+    top:0;
+    right:0;
+    
+}
+
+.tamanno {
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+}
+
+.ubicacion {
+    align-items: center;
+}

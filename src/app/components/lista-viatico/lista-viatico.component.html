@@ -1,0 +1,46 @@
+
+  <div class="container animate__animated animate__fadeIn">
+    <div class="card shadow" style="width: auto">
+        <div class="card-header" style="text-align: center;">
+          <h1><strong>Viaticos</strong> 
+            <button  
+              mat-fab matTooltip ="Agregar viatico" 
+              color="primary" 
+              class="agregar"
+              (click)="agregarViatico()">
+              <mat-icon>add</mat-icon>
+              </button>
+          </h1> 
+        </div>  
+
+        
+
+        <div class="card-body animate__animated animate__fadeInUp" >
+
+          <div class="alert alert-warning" style="text-align: center;" *ngIf="!listViaticos">
+            No existen viaticos creados para este evento
+          </div>
+
+          <div class="col">
+            <div class="row">
+              <div class="card ubicacion" *ngFor="let item of listViaticos">
+              
+                <img src="./assets/img/icons8-bill-100.png" class="tamanno" >
+                <div class="card-body">
+                <h5 class="card-title"><b>Fecha: </b>{{repararFecha(item.fecha)}}</h5>
+                <p class="card-text"><b>Viatico: </b>{{item.idViatico}}</p>
+                <button matTooltip="Detalles" type="button" class="btn btn-secondary btn-sm" (click)="seeViatico(item)">Ver viatico</button>
+                </div>
+                
+            </div>   
+            </div>
+          </div>
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+

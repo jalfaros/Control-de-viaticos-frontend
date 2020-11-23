@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <mat-card class="animate__animated animate__fadeInRight">
+
+        <h1 style="text-align: center;">
+            <i class="fa fa-calendar-plus"></i>
+            <strong>Creando Recurso</strong>
+        </h1>
+
+        <form style="text-align: center;" [formGroup]="forma" (ngSubmit)="submitForm()" autocomplete="off">
+            <div class="col mt-5">
+                <div class="row">
+                    
+                    <div class="container m-5">
+                        <mat-form-field>
+                            <mat-label>apellido1</mat-label>
+                            <input matInput placeholder="Ingrese el segundo apellido" formControlName="apellido1"
+                                [class.is-invalid]="apellido1NoValido">
+                            <mat-hint class="rojo" *ngIf="apellido1NoValido">Debe ingresar mínimo 4 letras</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field class="ml-5">
+                            <mat-label>apellido2</mat-label>
+                            <input matInput placeholder="Ingrese el segundo apellido" formControlName="apellido2"
+                                [class.is-invalid]="apellido2NoValido">
+                            <mat-hint class="rojo" *ngIf="apellido2NoValido">Debe ingresar mínimo 4 letras</mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="container m-5">
+                        <mat-form-field>
+                            <mat-label>nombre</mat-label>
+                            <input matInput placeholder="Nombre" formControlName="nombre"
+                                [class.is-invalid]="nombreNoValido">
+                            <mat-hint class="rojo" *ngIf="nombreNoValido">Debe ingresar mínimo 4 letras</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field class="ml-5">
+                            <mat-label>cedula</mat-label>
+                            <input matInput placeholder="#-####-####" formControlName="cedula"
+                                [class.is-invalid]="cedulaNoValido">
+                            <mat-hint class="rojo" *ngIf="cedulaNoValido">Debe ingresar el formato #-####-####</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <button class="espacioButton" (click)="crearProveedor()" type="submit" color="primary"
+                    mat-raised-button>Crear Centro-costo</button>
+                <button mat-button (click)="regresar()" class="espacioButton" color="warn"
+                    mat-raised-button>Volver</button>
+
+            </div>
+
+        </form>
+
+    </mat-card>
+</div>

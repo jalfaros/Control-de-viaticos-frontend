@@ -1,0 +1,150 @@
+<div class="container mt-5">
+    <mat-card class="animate__animated animate__fadeInRight">
+
+        <h1 style="text-align: center;">
+        <i class="fa fa-calendar-plus"></i>
+        <strong> Viatico</strong>
+        </h1>
+        
+        <form  style="text-align: center;" [formGroup]="forma" (ngSubmit)="submitForm()" autocomplete="off">
+            <div class="col mt-5">
+                <div class="row">
+
+                    <div class="container">
+                        <mat-form-field>
+                            <mat-label>Factura</mat-label>
+                            <input
+                                   matInput
+                    
+                                   placeholder="codigo o número"
+                                   formControlName="factura"
+                                   [class.is-invalid]="facturaNoValida"
+                                   >
+                             <mat-hint class="rojo" *ngIf="facturaNoValida">Debe ingresar cuatro caráteres</mat-hint>
+                         </mat-form-field>
+
+    
+                          <mat-form-field class="ml-5">
+                            <mat-label>Monto</mat-label>
+                            <span matPrefix>₡ &nbsp;</span>
+                            <input matInput
+                                   type="number"
+                                   [(ngModel)]="monto"
+                                   formControlName="monto"
+                                   [class.is-invalid]="montoNoValido">
+                                   <mat-hint class="rojo" *ngIf="montoNoValido">Debe ingresar un monto</mat-hint>
+                          </mat-form-field>
+                          
+                          
+                          <mat-form-field class="ml-5">
+                            <mat-label>NumPax</mat-label>
+                            <input matInput type="number" formControlName="numPax"
+                            [class.is-invalid]="numPaxNoValido">
+                            <mat-hint class="rojo" *ngIf="numPaxNoValido">Debe ingresar una cantidad</mat-hint>
+                          </mat-form-field>
+                        
+
+                    </div>
+
+                </div>            
+            </div>
+
+            <div class="col mt-5">
+                <div class="row-sm-3">
+
+                    <div class="container">
+
+
+
+                              <mat-form-field class="ml-5" >
+                                <mat-label>Tipo de viático</mat-label>
+                                <mat-select (selectionChange)="cambiarEstado($event)" formControlName="tipoViatico" 
+                                [class.is-invalid]="tipoNoValido"> 
+                                  <mat-option  *ngFor="let item of tipoViatico" [value]='item.idTipoViatico'> 
+                                      {{ item.descripcion }}
+                                  </mat-option>
+                                </mat-select>
+                                <mat-hint class="rojo" *ngIf="tipoNoValido">Debe seleccionar un tipo</mat-hint>
+                              </mat-form-field>
+
+                              <mat-form-field class="ml-5" >
+                                <mat-label>Automóvil</mat-label>
+                                <mat-select [disabled]="estadoAutomovil"
+                                  (selectionChange)="montoAuto($event)" 
+                                  formControlName="automovil" 
+                                  placeholder="Monto kilometro"
+                                  [class.is-invalid]="autoNoValido" > 
+                                  <mat-option *ngFor="let item of vehiculos; let i = index" [value]='item' > 
+                                      {{ item.modelo + ' ' + item.descripcion }}
+                                  </mat-option>
+                                </mat-select>
+                                <mat-hint class="rojo" *ngIf="autoNoValido">Debe seleccionar un auto</mat-hint>
+                              </mat-form-field>
+
+                              <mat-form-field class="ml-5">
+                                <mat-label>Monto por kilometro</mat-label>
+                                <input matInput
+                                       [(ngModel)]="montoKilometro"
+                                       formControlName="montoKilometro">
+                                </mat-form-field>
+                          
+                             
+                    </div>
+
+                </div>            
+            </div>
+
+            <div class="col mt-5">
+              <div class="row-sm-3">
+
+                <mat-form-field class="ml-5">
+                  <mat-label>Kilometros recorridos</mat-label>
+                  <input matInput
+                         type="number"
+                         [attr.disabled]="recorridoK == true ? true : null"
+                         [(ngModel)]="recorridos"
+                         (keyup.enter)="calcularMonto()"
+                         formControlName="kilometroRecorrido">
+                  </mat-form-field>
+
+
+                
+                <mat-form-field class="ml-5" >
+                  <mat-label>Cedúla</mat-label>
+                  <mat-select formControlName="cedula"
+                  [class.is-invalid]="cedulaNoValido" > 
+                    <mat-option *ngFor="let recurso of recursos" [value]='recurso.cedula'> 
+                        {{ recurso.nombre + ' ' + recurso.apellido1 | uppercase }} 
+                    </mat-option>
+                  </mat-select>
+                  <mat-hint class="rojo" *ngIf="cedulaNoValido">Debe seleccionar un recurso</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field class="ml-5" >
+                  <mat-label>Proveedor</mat-label>
+                  <mat-select formControlName="proveedor"
+                  [class.is-invalid]="provedorNoValido" >
+                    <mat-option *ngFor="let item of proovedor" [value]='item.idProveedor'>
+                        {{ item.descripcion }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-hint class="rojo" *ngIf="provedorNoValido">Debe seleccionar un proveedor</mat-hint>
+                </mat-form-field>
+
+
+              </div>
+            </div>
+
+            
+
+          
+
+        </form>
+
+       
+          <button type="submit" color="primary" (click)="crearViatico()" mat-raised-button>Crear Viatico</button>
+        
+    </mat-card>
+       
+    
+</div>

@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <mat-card class="animate__animated animate__fadeInRight">
+
+        <h1 style="text-align: center;">
+            <i class="fa fa-calendar-plus"></i>
+            <strong> Sucursal</strong>
+        </h1>
+
+        <form style="text-align: center;" [formGroup]="forma" (ngSubmit)="submitForm()" autocomplete="off">
+            <div class="col mt-5">
+                <div class="row">
+
+                    <div class="container m-5">
+                        <mat-form-field>
+                            <mat-label>Sucursal</mat-label>
+                            <input matInput placeholder="Ingrese el nombre de la sucursal" formControlName="nombre"
+                                [class.is-invalid]="nombreNoValido">
+                            <mat-hint class="rojo" *ngIf="nombreNoValido">Debe ingresar mínimo 4 letras</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field class="ml-5">
+                            <mat-label>Cliente</mat-label>
+                            <mat-select formControlName="cliente" placeholder="Cliente"
+                                [class.is-invalid]="clienteNoValido">
+                                <mat-option *ngFor="let item of clientes; let i = index" [value]='item.idCliente'>
+                                    {{item.descripcion}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint class="rojo" *ngIf="clienteNoValido">Debe seleccionar un cliente</mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+
+                </div>
+               
+                    <button class="espacioButton" (click)="crearSucursal()" type="submit" color="primary" mat-raised-button>Crear Sucursal</button>
+                    <button mat-button (click)="regresar()" class="espacioButton" color="warn" mat-raised-button>Volver</button>
+               
+
+
+            </div>
+
+        </form>
+
+
+
+
+
+    </mat-card>
+
+
+</div>

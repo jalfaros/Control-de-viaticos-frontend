@@ -1,0 +1,37 @@
+
+.user { 
+    height: 7rem;
+    
+    text-align: center;
+}
+
+.center { 
+    text-align: center;
+ }
+
+ 
+ .card {
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    float: none; 
+    margin-bottom: 1rem; 
+    margin-top: 3rem;
+    
+}
+
+.button { 
+    margin: 0 auto;
+ }
+ 
+ font-face { 
+    
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

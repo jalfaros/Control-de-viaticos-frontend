@@ -1,0 +1,36 @@
+<h1 mat-dialog-title class="align"><b>Editando Recurso</b></h1>
+<div mat-dialog-content class="align animate__animated animate__fadeInRight">
+
+    <p class="align">Recurso: <b>{{data.cedula}}</b></p>
+
+    <form class="m-2" [formGroup]="forma" autocomplete="off">
+        <mat-form-field class="margin">
+            <input matInput formControlName="apellido1" [class.is-invalid]="apellido1NoValido" type="text"
+                placeholder="Nuevo apellido1">
+            <mat-hint class="rojo" *ngIf="apellido1NoValido">Debe ingresar un minimo de 5 letras</mat-hint>
+        </mat-form-field>
+
+
+        <mat-form-field class="margin">
+            <input matInput formControlName="apellido2" [class.is-invalid]="apellido2NoValido" type="text"
+                placeholder="Nuevo apellido2">
+            <mat-hint class="rojo" *ngIf="apellido2NoValido">Debe ingresar un minimo de 5 letras</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="margin">
+            <input matInput formControlName="nombre" [class.is-invalid]="nombreNoValido" type="text"
+                placeholder="Nuevo nombre">
+            <mat-hint class="rojo" *ngIf="nombreNoValido">Debe ingresar un minimo de 5 letras</mat-hint>
+        </mat-form-field>
+    </form>
+
+    <mat-checkbox [(ngModel)]="changeValue" (change)="checkValue(changeValue?true:false)" class="mat-check"
+        color="primary">Estado</mat-checkbox>
+
+
+    <div class="align">
+        <button mat-raised-button (click)="onNoClick()" class="margen-boton">Cancelar</button>
+        <button (click)="guardar(data.cedula)" mat-raised-button color="primary" class="margen-boton">Guardar</button>
+        
+    </div>
+    

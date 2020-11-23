@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <mat-card class="animate__animated animate__fadeInRight">
+
+        <h1 style="text-align: center;">
+            <i class="fa fa-calendar-plus"></i>
+            <strong> Cliente</strong>
+        </h1>
+
+        <form style="text-align: center;" [formGroup]="forma" (ngSubmit)="submitForm()" autocomplete="off">
+            <div class="col mt-5">
+                <div class="row">
+
+                    <div class="container m-5">
+                        <mat-form-field>
+                            <mat-label>Cliente</mat-label>
+                            <input matInput placeholder="Nombre del Centro de Costo" formControlName="nombre"
+                                [class.is-invalid]="nombreNoValido">
+                            <mat-hint class="rojo" *ngIf="nombreNoValido">Debe ingresar mínimo 4 letras</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <button class="espacioButton" (click)="crearCliente()" type="submit" color="primary"
+                    mat-raised-button>Crear Cliente</button>
+                <button mat-button (click)="regresar()" class="espacioButton" color="warn"
+                    mat-raised-button>Volver</button>
+
+            </div>
+
+        </form>
+
+    </mat-card>
+</div>

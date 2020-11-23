@@ -1,0 +1,24 @@
+<h1 mat-dialog-title style="text-align: center;" ><b>Viatico</b></h1>
+<div mat-dialog-content>
+</div>
+<div class="container">
+    <p class="align"><b>{{data.idViatico}}</b></p>
+    <p><b>Numero de factura:</b>  {{data.numFactura}} </p>
+    <p><b>Monto del viatico:</b> ₡{{data.monto}}</p>
+    <p><b>NumPax: </b>{{data.numPax}}</p>
+    <p><b>Proveedor:</b> {{data.provedor}}</p>
+    <p><b>Tipo de viatico:</b> {{data.tipoViatico}}</p>
+    <p>
+        <b>Recurso:</b> 
+        {{data.nombre}} {{data.apellido}}
+    </p>
+</div>
+<div class="row" style="text-align: end">
+  <div class="col" style="text-align: end;">
+    <button type="button" class="btn btn-danger" (click)="deleteViatico(data.idViatico)">Eliminar Viatico</button>
+    <button type="button" style="margin-left: 5px;" class="btn btn-secondary" data-dismiss="modal" (click)="onNoClick()">Cerrar</button>
+  </div>
+</div>
+  
+        
+

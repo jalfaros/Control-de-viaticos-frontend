@@ -1,0 +1,212 @@
+<div class=" container mt-5 mb-5 animate__animated animate__fadeInRight">
+  <mat-card>
+
+
+    <h2 style="text-align: center;">
+      <i class="fa fa-book"></i>
+      Crear evento
+    </h2>
+
+    <form class="m-5" [formGroup]="forma" (ngSubmit)="submitForm()" autocomplete="off">
+
+        <div class="row">
+            <div class="col-sm-3">
+
+                <div class="form-group row mt-4">
+                    <div class="col">
+                        <mat-form-field>
+                            <textarea matInput
+                                      placeholder="Problema reportado"
+                                      formControlName="pReportado"
+                                      [class.is-invalid]="pReportadoNoValido">           
+                             </textarea>
+                             <mat-hint class="rojo" *ngIf="pReportadoNoValido">Debe ingresar un problema</mat-hint>
+                          </mat-form-field>
+                    </div>
+                </div>
+    
+    
+                <div class="form-group row">
+                    <div class="col">
+                        <mat-form-field>
+                            <textarea matInput 
+                                      placeholder="Trabajo realizado"
+                                      formControlName="tRealizado"
+                                      [class.is-invalid]="tRealizadoNoValido">  
+                            </textarea>
+                            <mat-hint class="rojo" *ngIf="tRealizadoNoValido">Debe ingresar el trabajo realizado</mat-hint>
+                          </mat-form-field>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <div class="col mt-3">
+                        <mat-form-field>
+                            <input matInput 
+                                      placeholder="Duración(horas)"
+                                      formControlName="horas"
+                                      type="number"
+                                      [class.is-invalid]="horaNoValido">  
+                                      <mat-hint class="rojo" *ngIf="horaNoValido">Debe ingresar la cantidad de horas</mat-hint>
+                          </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col">
+                        <mat-form-field>
+                            <input    matInput 
+                                      placeholder="Duración(minutos)"
+                                      formControlName="minutos"
+                                      type="number"
+                                      [class.is-invalid]="minutoNoValido">  
+                                      <mat-hint class="rojo" *ngIf="minutoNoValido">Debe ingresar la cantidad de minutos</mat-hint>
+                          </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col mt-3">
+                        <mat-form-field>
+                            <mat-label>Fecha del evento</mat-label>
+                            <input  [(ngModel)]="fechaEvento"
+                             matInput [matDatepicker]="picker" 
+                             formControlName="fecha"
+                             [class.is-invalid]="fechaNoValido">  
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-hint class="rojo" *ngIf="fechaNoValido">Debe ingresar una fecha</mat-hint>
+                        </mat-form-field>
+                        
+                    </div>
+                </div>
+
+            </div> 
+            
+      
+                <div class="col-sm-3 ml-2 mt-3">  
+
+                    
+
+                    <div class="form-group row"> <!--Listo-->
+                        <div class="col mt-3">
+                            <mat-form-field >
+                                <mat-label>Centro de costo</mat-label>
+                                <mat-select formControlName="cCosto"
+                                [class.is-invalid]="cCostoNoValido">
+                                  <mat-option *ngFor="let item of centroCosto" [value]="item.idCentroCosto">
+                                      {{ item.descripcion }}
+                                  </mat-option>
+                                </mat-select>
+                                <mat-hint class="rojo" *ngIf="cCostoNoValido">Debe seleccionar un centro de costo</mat-hint>
+                              </mat-form-field>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <div class="col mt-3">
+                            <mat-form-field >
+                                <mat-label>Motivo</mat-label>
+                                <mat-select formControlName="motivo"
+                                [class.is-invalid]="motivoNoValido">
+                                  <mat-option *ngFor="let item of motivo" [value]="item.tipoMotivo">
+                                      {{ item.descripcion }}
+                                  </mat-option>
+                                </mat-select>
+                                <mat-hint class="rojo" *ngIf="motivoNoValido">Debe seleccionar un motivo</mat-hint>
+                              </mat-form-field>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="col mt-3">
+                            <mat-form-field >
+                                <mat-label>Labor</mat-label>
+                                <mat-select formControlName="labor"
+                                [class.is-invalid]="laborNoValido">
+                                  <mat-option *ngFor="let item of labor" [value]="item.idLabor">
+                                      {{ item.descripcion }}
+                                  </mat-option>
+                                </mat-select>
+                                <mat-hint class="rojo" *ngIf="laborNoValido">Debe seleccionar una labor</mat-hint>
+                              </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col mt-3">
+                            <mat-form-field >
+                                <mat-label>Sucursal</mat-label>
+                                <mat-select formControlName="sucursal"
+                                [class.is-invalid]="sucursalNoValido">
+                                  <mat-option *ngFor="let item of sucursales" [value]="item.idSucursal">
+                                      {{ item.descripcion + ' ' + item.cliente }}
+                                  </mat-option>
+                                </mat-select>
+                                <mat-hint class="rojo" *ngIf="sucursalNoValido">Debe seleccionar una sucursal</mat-hint>
+                              </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col mt-3">
+                            <mat-form-field >
+                                <mat-label>Recurso</mat-label>
+                                <mat-select formControlName="cedula"
+                                [class.is-invalid]="cedulaNoValido">
+                                  <mat-option *ngFor="let item of recurso" [value]="item.cedula">
+                                      {{ item.nombre + ' ' + item.apellido1 | uppercase}} 
+                                  </mat-option>
+                                </mat-select>
+                                <mat-hint class="rojo" *ngIf="cedulaNoValido">Debe seleccionar un recurso</mat-hint>
+                              </mat-form-field>
+                        </div>
+                    </div>
+            
+
+            </div>
+
+
+            <!--Aquí la otra columna-->
+
+            <div class="col-sm-3 ml-2 mt-3"  > 
+
+                <div class="form-group row">
+                    <div class="col mt-4 " style="text-align: end;">
+                       
+                        <mat-slide-toggle color="primary" [(ngModel)]="toggle" formControlName="resuelto">Problema resuelto</mat-slide-toggle>
+                            
+                    </div>
+                </div>
+
+            </div>
+
+
+            
+
+            
+        </div>
+
+
+        <div style="text-align: right">
+            
+        <button mat-raised-button color="primary" (click)="crearEvento()">Crear evento</button>
+        <button mat-raised-button type="button" color="accent" (click)="limpiar()" class="ml-4">
+            Limpiar
+        </button>
+        <button type="button" class="ml-4" mat-raised-button color="warn" (click)="volver()">Volver</button>
+
+        </div>
+
+        
+
+
+    </form>
+
+
+
+  </mat-card>
+</div>

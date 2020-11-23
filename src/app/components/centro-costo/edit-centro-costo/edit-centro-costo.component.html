@@ -1,0 +1,22 @@
+<h1 mat-dialog-title class="align"><b>Editando Centro Costo</b></h1>
+<div mat-dialog-content class="align animate__animated animate__fadeInRight">
+
+    <p class="align">Escriba el nuevo nombre del Centro de costo <b>{{data.idCentroCosto}}</b></p>
+
+    <form class="m-2" [formGroup]="forma" autocomplete="off">
+        <mat-form-field class="margin">
+            <input matInput formControlName="nombre" [class.is-invalid]="nombreNoValido" type="text"
+                placeholder="Nuevo nombre">
+            <mat-hint class="rojo" *ngIf="nombreNoValido">Debe ingresar un minimo de 5 letras</mat-hint>
+        </mat-form-field>
+    </form>
+
+    <mat-checkbox [(ngModel)]="changeValue" (change)="checkValue(changeValue?true:false)" class="mat-check"
+        color="primary">Estado</mat-checkbox>
+
+
+    <div class="align">
+        <button mat-raised-button (click)="onNoClick()" class="margen-boton">Cancelar</button>
+        <button (click)="guardar(data.idCentroCosto)" mat-raised-button color="primary" class="margen-boton">Guardar</button>
+        
+    </div>

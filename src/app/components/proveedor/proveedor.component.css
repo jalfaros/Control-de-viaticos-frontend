@@ -1,0 +1,32 @@
+.altura{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.titulo{
+    text-align: center;
+    font-weight: 500;
+}
+
+.color{
+    background-color: transparent;
+    border: none;
+}
+
+.rojo{
+    color: darkred;
+}
+
+.amarillo{
+    color: darkgoldenrod
+}
+
+.agregar {
+
+    font-size: 8pt;
+    margin-top: 25px;
+    margin-right: 50px;
+    position:absolute;
+    top:0;
+    right:0;
+}
